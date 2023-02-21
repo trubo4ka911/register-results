@@ -26,10 +26,9 @@ const App = () => {
     <div>
       <SearchForm onSearch={handleSearch} />
       <PeopleList
-        peopleData={filteredPeopleData}
+        peopleData={peopleData}
         store={store}
         searchTerm={searchTerm}
-        filteredPeopleData={filteredPeopleData}
       />
     </div>
   );

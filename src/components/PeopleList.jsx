@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PersonCard from "./PersonCard";
 import {
   Title,
@@ -12,10 +12,11 @@ import {
 } from "./PeopleList.styled";
 
 const PeopleList = ({ peopleData, store, searchTerm }) => {
-  const participants = store.participants;
+  const [participants, setParticipants] = useState(store.participants);
 
   const handleDeleteParticipant = (id) => {
     store.deleteParticipant(id);
+    setParticipants(store.participants);
   };
 
   const filteredPeopleData = peopleData.filter((person) => {
@@ -26,36 +27,21 @@ const PeopleList = ({ peopleData, store, searchTerm }) => {
 
   return (
     <>
-      <Title>Participants:</Title>
-      <ListWrapper>
-        {filteredPeopleData.map((person) => (
-          <CardWrapper key={person.id}>
-            <PersonCard
-              person={person}
-              onDeleteParticipant={handleDeleteParticipant}
-              disabled={participants.some(
-                (participant) => participant.id === person.id
-              )}
-            />
-          </CardWrapper>
-        ))}
-        <div>
-          {participants.map((participant) => (
-            <ParticipantWrapper key={participant.id}>
-              <ParticipantId>ID: {participant.id}</ParticipantId>
-              <ParticipantName>Name: {participant.name}</ParticipantName>
-              <ParticipantTime>Time: {participant.time}</ParticipantTime>
-              <DeleteButton
-                onClick={() => handleDeleteParticipant(participant.id)}
-              >
-                Delete
-              </DeleteButton>
-            </ParticipantWrapper>
-          ))}
-        </div>
-      </ListWrapper>
+    <Title>Participants:</Title>
+    <ListWrapper>
+      {filteredPeopleData.map((person) => (
+        <CardWrapper key={person.id}>
+          <PersonCard
+            person={person}
+            onDeleteParticipant={handleDeleteParticipant}
+            disabled={participants.some(
+              (participant) => participant.id === person.id
+            )}
+          />
+        </CardWrapper>
+      ))}
+    </ListWrapper>
     </>
   );
 };
-
 export default PeopleList;
