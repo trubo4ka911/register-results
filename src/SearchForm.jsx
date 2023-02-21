@@ -4,7 +4,7 @@ import {
   Input,
   Button,
   ErrorMessage,
-} from './SearchForm.styled';
+} from './components/SearchForm.styled';
 
 const SearchForm = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');

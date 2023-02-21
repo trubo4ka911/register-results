@@ -1,37 +1,26 @@
 import React, { useState } from "react";
-import PeopleList from "./components/PeopleList";
-import Store from "./components/Store";
-import SearchForm from "./components/SearchForm";
-import peopleData from "./peopleData.json";
+import SearchForm from "./SearchForm";
+import SearchResults from "./SearchResults";
+import { data } from "./data";
 
-const App = () => {
-  const [store] = useState(() => Store());
+function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = (searchTerm) => {
-    setSearchTerm(searchTerm);
-  };
-
-  const filteredPeopleData = searchTerm
-    ? peopleData.filter((person) => {
-        const nameMatches = person.name
-          .toLowerCase()
-          .includes(searchTerm.toString().toLowerCase());
-        const idMatches = person.id.toString().includes(searchTerm);
-        return nameMatches || idMatches;
-      })
-    : peopleData;
+  const filteredData = data.filter((person) => {
+    const nameMatches = person.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const idMatches = person.id.toString().includes(searchTerm);
+    return nameMatches || idMatches;
+  });
 
   return (
     <div>
-      <SearchForm onSearch={handleSearch} />
-      <PeopleList
-        peopleData={peopleData}
-        store={store}
-        searchTerm={searchTerm}
-      />
+      <h1>Search App</h1>
+      <SearchForm onSearch={setSearchTerm} />
+      <SearchResults data={filteredData} />
     </div>
   );
-};
+}
 
 export default App;
