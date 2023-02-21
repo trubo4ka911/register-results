@@ -1,25 +1,12 @@
 import React from 'react';
-import {
-  ParticipantId,
-  ParticipantName,
-  ParticipantTime,
-  CardWrapper,
-  DeleteButton,
-} from "./PeopleList.styled";
+import { CardWrapper, Name, Id, Time } from './PersonCard.styled';
 
-const PersonCard = ({ person, onDeleteParticipant, disabled }) => {
-  const handleDeleteButtonClick = () => {
-    onDeleteParticipant(person.id);
-  };
-
+const PersonCard = ({ person }) => {
   return (
-<CardWrapper>
-      <ParticipantId>ID: {person.id}</ParticipantId>
-      <ParticipantName>Name: {person.name}</ParticipantName>
-      <ParticipantTime>Time: {person.time}</ParticipantTime>
-      <DeleteButton onClick={handleDeleteButtonClick} disabled={disabled}>
-        Delete
-      </DeleteButton>
+    <CardWrapper>
+      <Name>{person.name}</Name>
+      <Id>{person.id}</Id>
+      <Time>{person.time}</Time>
     </CardWrapper>
   );
 };

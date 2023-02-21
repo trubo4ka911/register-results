@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PersonCard from './components/PersonCard';
+import { ResultsWrapper, NoResults } from './SearchResults.styled';
 
-const SearchResults = ({ peopleData, searchTerm }) => {
-  const [filteredPeopleData, setFilteredPeopleData] = useState([]);
-
-  useState(() => {
-    setFilteredPeopleData(
-      peopleData.filter((person) => {
-        const nameMatches = person.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const idMatches = person.id.toString().includes(searchTerm);
-        return nameMatches || idMatches;
-      })
-    );
-  }, [peopleData, searchTerm]);
+const SearchResults = ({ filteredPeopleData }) => {
+  if (filteredPeopleData.length === 0) {
+    return <span>No results found.</span>;
+  }
 
   return (
-    <>
+    <ResultsWrapper>
       {filteredPeopleData.map((person) => (
         <PersonCard key={person.id} person={person} />
       ))}
-    </>
+    </ResultsWrapper>
   );
 };
 

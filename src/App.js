@@ -5,20 +5,26 @@ import { data } from "./data";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [filteredPeopleData, setFilteredPeopleData] = useState(data);
 
-  const filteredData = data.filter((person) => {
-    const nameMatches = person.name
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const idMatches = person.id.toString().includes(searchTerm);
-    return nameMatches || idMatches;
-  });
+  const handleSearch = (searchText) => {
+    setSearchTerm(searchText);
+    setFilteredPeopleData(
+      data.filter((person) => {
+        const nameMatches = person.name
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
+        const idMatches = person.id.toString().includes(searchText);
+        return nameMatches || idMatches;
+      })
+    );
+  };
 
   return (
-    <div>
-      <h1>Search App</h1>
-      <SearchForm onSearch={setSearchTerm} />
-      <SearchResults data={filteredData} />
+    <div className="App">
+      <h1>Search Results</h1>
+      <SearchForm onSearch={handleSearch} />
+      <SearchResults filteredPeopleData={filteredPeopleData} />
     </div>
   );
 }

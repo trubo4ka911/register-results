@@ -4,7 +4,7 @@ import {
   Input,
   Button,
   ErrorMessage,
-} from './components/SearchForm.styled';
+} from './SearchForm.styled';
 
 const SearchForm = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
@@ -12,7 +12,6 @@ const SearchForm = ({ onSearch }) => {
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
-    setError('');
   };
 
   const handleSearch = (event) => {
@@ -21,6 +20,7 @@ const SearchForm = ({ onSearch }) => {
       setError('Please enter a search term.');
     } else {
       onSearch(searchText);
+      setError('');
     }
   };
 
