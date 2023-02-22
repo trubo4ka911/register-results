@@ -6,12 +6,13 @@ const SearchResults = ({ searchQuery }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const filteredData = data.filter(person => {
+    const filteredData = data && data.filter(person => {
       return person.name.toLowerCase().includes(searchQuery.toLowerCase());
     });
-    setSearchResults(filteredData);
-  }, [searchQuery]);
-
+    console.log("filtered data:", filteredData);
+    setSearchResults(filteredData || []);
+  }, [searchQuery, data]);
+  
   return (
     <div className="search-results">
       <h2>Search Results</h2>
