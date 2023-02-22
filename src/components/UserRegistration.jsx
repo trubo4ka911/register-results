@@ -4,18 +4,18 @@ import { data } from '../data';
 const UserRegistration = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [people, setPeople] = useState(data);
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const firstName = e.target.firstName.value;
-    const lastName = e.target.lastName.value;
-    const id = data.length + 1; // new id is last id + 1
-    const newUser = { id, name: `${firstName} ${lastName}` };
-    data.push(newUser);
-    console.log('data:', data); // verify data is updated
-    e.target.firstName.value = '';
-    e.target.lastName.value = '';
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const newPerson = {
+      id: people.length + 1,
+      name: `${firstName} ${lastName}`,
+    };
+    setPeople([...people, newPerson]);
+    event.target.reset();
   };
+  
 
   return (
     <div>
