@@ -6,17 +6,18 @@ const UserRegistration = () => {
   const [lastName, setLastName] = useState('');
   const [people, setPeople] = useState(data);
 
- const handleFormSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     const firstName = event.target.elements.firstName.value;
     const lastName = event.target.elements.lastName.value;
     const newPerson = {
-      id: people.length + 1,
+      id: data.length + 1,
       name: `${firstName} ${lastName}`,
     };
-    setPeople([...people, newPerson]);
+    setData([...data, newPerson]);
     event.target.reset();
   };
+  
   
 
   return (

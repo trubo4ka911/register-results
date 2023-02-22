@@ -12,7 +12,7 @@ const SearchForm = ({ handleSearch }) => {
     return (
       <form>
         <label htmlFor="search">Search:</label>
-        <input type="text" id="search" onChange={handleInputChange} />
+         <input type="text" id="search" onChange={handleInputChange} />
         <button type="reset" onClick={() => handleSearch("")}>
           Clear
         </button>
