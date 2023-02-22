@@ -18,12 +18,13 @@ import React from 'react';
 function PersonCard({ person }) {
   console.log('person:', person);
   console.log('person.name:', person.name);
-  console.log('person.email:', person.email);
-const{name,email}=person
+  console.log('person.id:', person.id);
+const{name,id,time}=person
   return (
     <div>
       <h3>{person.name? person.name : ""}</h3>
-      <p>{person.email}</p>
+      <p>{person.id}</p>
+      <p>{person.time}</p>
     </div>
   );
 }
