@@ -4,7 +4,7 @@ const PersonCard = ({ person }) => {
     
   return (
     <div>
-      <h2>{person.name}</h2>
+      <h2>{person.name? person.name : ""}</h2>
       <p>ID: {person.id}</p>
       <p>Time: {person.time}</p>
     </div>
