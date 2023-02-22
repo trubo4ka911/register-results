@@ -2,19 +2,22 @@ import React, { useState, useEffect } from 'react';
 import SearchForm from './SearchForm';
 import PersonCard from './PersonCard';
 
-const SearchResults = ({ peopleData, searchQuery }) => {
+const SearchResults = ({ peopleData, searchQuery, setSearchResults }) => {
   const [filteredPeopleData, setFilteredPeopleData] = useState(peopleData || []);
 
   useEffect(() => {
-    if (!peopleData) {
-      return;
-    }
-
-    const filteredData = peopleData.filter((person) =>
-      person.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredPeopleData(filteredData);
-  }, [peopleData, searchQuery]);
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/results');
+        const data = await response.json();
+        setSearchResults(data);
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+      }
+    };
+    fetchData();
+  }, []);
+  
 
   return (
     <div>

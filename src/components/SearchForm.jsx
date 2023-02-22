@@ -5,19 +5,14 @@ const SearchForm = ({ handleSearch }) => {
   
     const handleInputChange = (e) => {
       const query = e.target.value;
-      setSearchValue(query);
-      handleSearch(query);
+    //   setSearchValue(query);
+    //   handleSearch(query);
     };
   
     return (
       <form>
         <label htmlFor="search">Search:</label>
-        <input
-          type="text"
-          id="search"
-          value={searchValue}
-          onChange={handleInputChange}
-        />
+        <input type="text" id="search" onChange={handleInputChange} />
         <button type="reset" onClick={() => handleSearch("")}>
           Clear
         </button>

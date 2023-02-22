@@ -4,6 +4,7 @@ import SearchResults from "./components/SearchResults";
 import SearchForm from "./components/SearchForm";
 
 function App() {
+  const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [peopleData, setPeopleData] = useState(data.people);
 
@@ -15,9 +16,9 @@ function App() {
     <div>
       <SearchForm handleSearch={handleSearch} />
       <SearchResults
+        searchResults={searchResults}
         searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        peopleData={peopleData}
+        setSearchResults={setSearchResults}
       />
     </div>
   );
