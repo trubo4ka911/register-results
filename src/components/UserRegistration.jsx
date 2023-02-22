@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { data } from '../data';
 
-const UserRegistration = () => {
+const UserRegistration = ({ setData }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [people, setPeople] = useState(data);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -18,7 +17,6 @@ const UserRegistration = () => {
     event.target.reset();
   };
   
-  
 
   return (
     <div>
@@ -29,7 +27,7 @@ const UserRegistration = () => {
           <input
             type="text"
             value={firstName}
-            onChange={(event) => setFirstName(event.target.value)} name="firstName"
+            onChange={(event) => setFirstName(event.target.value)}
           />
         </label>
         <br />
@@ -38,7 +36,7 @@ const UserRegistration = () => {
           <input
             type="text"
             value={lastName}
-            onChange={(event) => setLastName(event.target.value)} name="lastName"
+            onChange={(event) => setLastName(event.target.value)}
           />
         </label>
         <br />
