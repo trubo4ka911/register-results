@@ -1,12 +1,12 @@
 import React from 'react';
 
-const PersonCard = ({ result }) => {
+const PersonCard = ({ person }) => {
     
   return (
     <div>
-      <h2>{result.name}</h2>
-      <p>ID: {result.id}</p>
-      <p>Time: {result.time}</p>
+      <h2>{person.name}</h2>
+      <p>ID: {person.id}</p>
+      <p>Time: {person.time}</p>
     </div>
   );
 };
