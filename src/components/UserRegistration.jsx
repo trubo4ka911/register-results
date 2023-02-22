@@ -7,8 +7,8 @@ const UserRegistration = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
+    const firstName = event.target[0].value;
+    const lastName = event.target[1].value;
     const newPerson = {
       id: data().length + 1,
       name: `${firstName} ${lastName}`,
