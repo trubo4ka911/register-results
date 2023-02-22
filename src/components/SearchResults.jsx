@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import SearchForm from './SearchForm';
+import PearsonCard from './PersonCard';
 import {data} from '../data';
-import PersonCard from './PersonCard';
 
 const SearchResults = ({ searchQuery }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const filteredResults = data.filter((person) =>
-      person.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setSearchResults(filteredResults);
+    const filteredData = data.filter(person => {
+      return person.name.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setSearchResults(filteredData);
   }, [searchQuery]);
 
   return (
@@ -17,7 +18,7 @@ const SearchResults = ({ searchQuery }) => {
       <h2>Search Results</h2>
       <div className="cards">
         {searchResults.map((result, index) => (
-          <PersonCard key={index} person={result} />
+          <PearsonCard key={index} result={result} />
         ))}
       </div>
     </div>

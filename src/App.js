@@ -14,12 +14,8 @@ function App() {
 
   return (
     <div>
-      <SearchForm handleSearch={handleSearch} />
-      <SearchResults
-        searchResults={searchResults}
-        searchQuery={searchQuery}
-        setSearchResults={setSearchResults}
-      />
+      <SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <SearchResults peopleData={data} searchQuery={searchQuery} />
     </div>
   );
 }
