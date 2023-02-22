@@ -1,13 +1,12 @@
 import React from 'react';
-import { CardWrapper, Name, Id, Time } from './PersonCard.styled';
 
 const PersonCard = ({ person }) => {
   return (
-    <CardWrapper>
-      <Name>{person.name}</Name>
-      <Id>{person.id}</Id>
-      <Time>{person.time}</Time>
-    </CardWrapper>
+    <div>
+      <h2>{person.name}</h2>
+      <p>ID: {person.id}</p>
+      <p>Time: {person.time}</p>
+    </div>
   );
 };
 

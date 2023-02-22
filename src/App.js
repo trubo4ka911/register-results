@@ -1,30 +1,20 @@
-import React, { useState } from "react";
-import SearchForm from "./SearchForm";
-import SearchResults from "./SearchResults";
+import { useState } from "react";
 import { data } from "./data";
+import SearchResults from "./components/SearchResults";
+import SearchForm from "./components/SearchForm";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredPeopleData, setFilteredPeopleData] = useState(data);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [peopleData, setPeopleData] = useState(data);
 
-  const handleSearch = (searchText) => {
-    setSearchTerm(searchText);
-    setFilteredPeopleData(
-      data.filter((person) => {
-        const nameMatches = person.name
-          .toLowerCase()
-          .includes(searchText.toLowerCase());
-        const idMatches = person.id.toString().includes(searchText);
-        return nameMatches || idMatches;
-      })
-    );
+  const handleSearch = (query) => {
+    setSearchQuery(query);
   };
 
   return (
-    <div className="App">
-      <h1>Search Results</h1>
-      <SearchForm onSearch={handleSearch} />
-      <SearchResults filteredPeopleData={filteredPeopleData} />
+    <div>
+      {/* <SearchForm handleSearch={handleSearch} /> */}
+      <SearchResults searchQuery={searchQuery} data={data} />
     </div>
   );
 }
