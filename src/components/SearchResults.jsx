@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { data } from '../data';
-import PearsonCard from './PersonCard';
+import PersonCard from './PersonCard';
 
 const SearchResults = ({ searchQuery }) => {
   const [searchResults, setSearchResults] = useState([]);
