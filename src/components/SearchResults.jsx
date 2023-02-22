@@ -17,9 +17,9 @@ const SearchResults = ({ searchQuery }) => {
     <div className="search-results">
       <h2>Search Results</h2>
       <div className="cards">
-        {searchResults.map((result, index) => (
-          <PearsonCard key={index} result={result} />
-        ))}
+        {searchResults.map((person, index) => (
+  <PersonCard key={index} person={person} />
+))}
       </div>
     </div>
   );

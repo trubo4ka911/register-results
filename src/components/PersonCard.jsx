@@ -19,13 +19,11 @@ function PersonCard({ person }) {
   console.log('person:', person);
   console.log('person.name:', person.name);
   console.log('person.email:', person.email);
-  console.log('person.phone:', person.phone);
-
+const{name,email}=person
   return (
-    <div className="card">
+    <div>
       <h3>{person.name? person.name : ""}</h3>
       <p>{person.email}</p>
-      <p>{person.phone}</p>
     </div>
   );
 }
