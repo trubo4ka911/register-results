@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchForm from './SearchForm';
 import PersonCard from './PersonCard';
-import { data } from '../data';
 
-const SearchResults = () => {
-  const [filteredPeopleData, setFilteredPeopleData] = useState(data);
+const SearchResults = ({ peopleData, searchQuery, setSearchQuery }) => {
+  const [filteredPeopleData, setFilteredPeopleData] = useState(peopleData);
 
-  const handleSearch = (searchValue) => {
-    const filteredData = data.filter((person) =>
-      person.name.toLowerCase().includes(searchValue.toLowerCase())
+  useEffect(() => {
+    const filteredData = peopleData.filter((person) =>
+      person.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredPeopleData(filteredData);
+  }, [peopleData, searchQuery]);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
   };
 
   return (

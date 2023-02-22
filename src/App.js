@@ -5,7 +5,7 @@ import SearchForm from "./components/SearchForm";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [peopleData, setPeopleData] = useState(data);
+  const [peopleData, setPeopleData] = useState(data.people);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -13,8 +13,12 @@ function App() {
 
   return (
     <div>
-      {/* <SearchForm handleSearch={handleSearch} /> */}
-      <SearchResults searchQuery={searchQuery} data={data} />
+      <SearchForm handleSearch={handleSearch} />
+      <SearchResults
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        peopleData={peopleData}
+      />
     </div>
   );
 }
