@@ -6,19 +6,16 @@ import UserRegistration from "./components/UserRegistration";
 import TotalParticipants from "./components/TotalParticipants";
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [peopleData, setPeopleData] = useState(data.people);
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    setSearchQuery(event.target.value);
+  const handleSearch = (query) => {
+    setSearchQuery(query);
   };
 
   return (
     <div>
-      <SearchForm searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <SearchResults peopleData={data} searchQuery={searchQuery} />
+      <SearchForm handleSearch={handleSearch} />
+      <SearchResults searchQuery={searchQuery} />
       <UserRegistration />
       <TotalParticipants />
     </div>
