@@ -7,7 +7,7 @@ const SearchResults = ({ searchQuery }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const filteredData = data.filter((person) => {
+    const filteredData = data().filter((person) => {
       return person.name.toLowerCase().includes(searchQuery.toLowerCase());
     });
     setSearchResults(filteredData);

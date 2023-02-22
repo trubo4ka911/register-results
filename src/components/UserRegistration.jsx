@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { data } from '../data';
 
 const UserRegistration = () => {
@@ -8,16 +7,15 @@ const UserRegistration = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    const newUser = {
-      id: uuidv4(),
-      name: `${firstName} ${lastName}`
+    const firstName = event.target.firstName.value;
+    const lastName = event.target.lastName.value;
+    const newPerson = {
+      id: data().length + 1,
+      name: `${firstName} ${lastName}`,
     };
-
-    data(newUser);
-
-    setFirstName('');
-    setLastName('');
+    data().push(newPerson);
+    console.log(data());
+    event.target.reset();
   };
 
   return (
